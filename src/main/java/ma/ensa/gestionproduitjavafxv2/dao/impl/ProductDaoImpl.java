@@ -5,7 +5,10 @@ import ma.ensa.gestionproduitjavafxv2.dao.facade.ProductDao;
 import ma.ensa.gestionproduitjavafxv2.model.Product;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProductDaoImpl implements ProductDao {
     @Override
@@ -21,8 +24,32 @@ public class ProductDaoImpl implements ProductDao {
             conn.getCon().close();
             return saved;
         }catch (SQLException | ClassNotFoundException e){
-            e.fillInStackTrace();
+            e.printStackTrace();
         }
         return 0;
+    }
+
+    @Override
+    public List<Product> findAll() {
+        String sql = "SELECT * FROM product";
+        List<Product> products = new ArrayList<>();
+        try {
+            ConnectionDB conn = new ConnectionDB();
+            PreparedStatement ps = conn.getCon().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                products.add(
+                        new Product(
+                                rs.getString("ref"),
+                                rs.getString("name"),
+                                rs.getDouble("price")
+                        )
+                );
+            }
+            return products;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
     }
 }

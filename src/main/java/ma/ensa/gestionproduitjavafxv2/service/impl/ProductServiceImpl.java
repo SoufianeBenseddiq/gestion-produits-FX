@@ -5,6 +5,8 @@ import ma.ensa.gestionproduitjavafxv2.dao.impl.ProductDaoImpl;
 import ma.ensa.gestionproduitjavafxv2.model.Product;
 import ma.ensa.gestionproduitjavafxv2.service.facade.ProductService;
 
+import java.util.List;
+
 public class ProductServiceImpl implements ProductService {
     @Override
     public int save(Product product) {
@@ -12,6 +14,15 @@ public class ProductServiceImpl implements ProductService {
             throw new IllegalArgumentException("Price must be greater than 0");
         }
         return productDao.save(product);
+    }
+
+    @Override
+    public List<Product> findAll() {
+        List<Product> all = productDao.findAll();
+        if (all == null) {
+            throw new IllegalArgumentException("error in findAll");
+        }
+        return all;
     }
 
     private final ProductDao productDao = new ProductDaoImpl();

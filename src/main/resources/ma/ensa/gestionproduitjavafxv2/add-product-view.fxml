@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="650.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/25"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ma.ensa.gestionproduitjavafxv2.controller.ProductController">
+
+   <children>
+
+      <Text layoutX="165.0" layoutY="82.0">
+         <font><Font size="23.0" /></font>
+         Add a new product
+      </Text>
+
+      <TextField fx:id="ref" layoutX="168.0" layoutY="122.0" prefWidth="262.0" promptText="ref"/>
+      <TextField fx:id="name" layoutX="169.0" layoutY="184.0" prefWidth="262.0" promptText="name"/>
+      <TextField fx:id="price" layoutX="168.0" layoutY="251.0" prefWidth="262.0" promptText="price"/>
+
+      <Button text="Add Product" onAction="#add"
+              layoutX="234.0" layoutY="325.0"
+              prefWidth="145.0" style="-fx-background-color: blue;" textFill="WHITE"/>
+
+      <TableView fx:id="table" layoutX="40.0" layoutY="380.0"
+                 prefWidth="520.0" prefHeight="250.0">
+         <columns>
+            <TableColumn fx:id="colRef" text="Ref" prefWidth="150"/>
+            <TableColumn fx:id="colName" text="Name" prefWidth="200"/>
+            <TableColumn fx:id="colPrice" text="Price" prefWidth="150"/>
+         </columns>
+      </TableView>
+
+   </children>
+</AnchorPane>
