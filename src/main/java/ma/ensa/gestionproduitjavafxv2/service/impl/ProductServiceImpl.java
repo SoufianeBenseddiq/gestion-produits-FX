@@ -25,5 +25,15 @@ public class ProductServiceImpl implements ProductService {
         return all;
     }
 
+    @Override
+    public int update(Product product) {
+        return productDao.update(product);
+    }
+
+    @Override
+    public int delete(String ref) {
+        return productDao.delete(ref);
+    }
+
     private final ProductDao productDao = new ProductDaoImpl();
 }

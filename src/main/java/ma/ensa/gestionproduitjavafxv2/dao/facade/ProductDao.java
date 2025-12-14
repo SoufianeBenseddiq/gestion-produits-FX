@@ -7,4 +7,6 @@ import java.util.List;
 public interface ProductDao {
     int save(Product product);
     List<Product> findAll();
+    int update(Product product);
+    int delete(String ref);
 }

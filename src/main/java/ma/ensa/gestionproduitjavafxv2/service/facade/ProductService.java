@@ -8,4 +8,8 @@ public interface ProductService {
     int save(Product product);
 
     List<Product> findAll();
+
+    int update(Product product);
+
+    int delete(String ref);
 }
